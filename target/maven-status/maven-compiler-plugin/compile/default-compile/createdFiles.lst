@@ -1,0 +1,14 @@
+com\lokomotif\schedulerinfo\service\ApiClientService.class
+com\lokomotif\schedulerinfo\repository\SummaryRepository.class
+com\lokomotif\schedulerinfo\controller\Scheduler.class
+com\lokomotif\schedulerinfo\service\GenerateInfo.class
+com\lokomotif\schedulerinfo\model\Lokomotif$LokomotifBuilder.class
+com\lokomotif\schedulerinfo\dto\SummaryDto.class
+com\lokomotif\schedulerinfo\service\SummaryService.class
+com\lokomotif\schedulerinfo\dto\SummaryDto$SummaryDtoBuilder.class
+com\lokomotif\schedulerinfo\model\Lokomotif.class
+com\lokomotif\schedulerinfo\model\Summary.class
+com\lokomotif\schedulerinfo\SchedulerInfoApplication.class
+com\lokomotif\schedulerinfo\controller\SummaryController.class
+com\lokomotif\schedulerinfo\repository\LokoRepository.class
+com\lokomotif\schedulerinfo\AppConfig.class
