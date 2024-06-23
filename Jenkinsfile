@@ -15,7 +15,7 @@ pipeline {
         stage('Test SonarQube Connectivity') {
             steps {
                 script {
-                    def sonarUrl = 'http://<sonarqube-server-url>'
+                    def sonarUrl = 'http://localhost:9000'
                     def response = sh(script: "curl -s -o /dev/null -w '%{http_code}' ${sonarUrl}", returnStdout: true).trim()
                     if (response == '200') {
                         echo "Successfully connected to SonarQube server."
