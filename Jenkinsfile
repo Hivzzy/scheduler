@@ -12,6 +12,19 @@ pipeline {
                 echo 'Git Checkout Completed'
             }
         }
+        stage('Test SonarQube Connectivity') {
+            steps {
+                script {
+                    def sonarUrl = 'http://<sonarqube-server-url>'
+                    def response = sh(script: "curl -s -o /dev/null -w '%{http_code}' ${sonarUrl}", returnStdout: true).trim()
+                    if (response == '200') {
+                        echo "Successfully connected to SonarQube server."
+                    } else {
+                        error "Failed to connect to SonarQube server. HTTP response code: ${response}"
+                    }
+                }
+            }
+        }
         stage('SonarQube Analysis') {
             steps {
                 withSonarQubeEnv('SonarQube') {
