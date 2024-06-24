@@ -16,7 +16,7 @@ pipeline {
             steps {
                 withSonarQubeEnv('SonarQube') {
                     bat 'mvn clean package'
-                    bat ''' mvn clean verify sonar:sonar -Dsonar.projectKey=scheduler-info -Dsonar.projectName='scheduler-info' -Dsonar.host.url=http://172.29.48.1:9000 '''
+                    bat "mvn clean verify sonar:sonar"
                     echo 'SonarQube Analysis Completed'
                 }
             }
