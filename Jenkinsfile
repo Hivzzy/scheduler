@@ -21,42 +21,6 @@ pipeline {
                 }
             }
         }
-        stage("Quality Gate") {
-            steps {
-                waitForQualityGate abortPipeline: true
-                echo 'Quality Gate Completed'
-            }
-        }
-
-        stage('Build Docker Image') {
-            steps {
-                script {
-                    bat 'docker build -t hivzzy/scheduler-info .'
-                    echo 'Build Docker Image Completed'
-                }
-            }
-        }
-
-        stage('Docker Push') {
-            steps {
-                script {
-                    withCredentials([string(credentialsId: 'hub', variable: 'dockerhub-password')]) {
-                        bat ''' docker login -u hivzzy -p "%dockerhub-password%" '''
-                    }
-                    bat 'docker push hivzzy/scheduler-info'
-                }
-            }
-        }
-
-        stage ('Docker Run') {
-            steps {
-                script {
-                    bat 'docker run -d --name scheduler-info -p 8099:8080 hivzzy/scheduler-info'
-                    echo 'Docker Run Completed'
-                }
-            }
-        }
-
     }
     post {
         always {
