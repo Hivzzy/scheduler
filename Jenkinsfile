@@ -15,7 +15,7 @@ pipeline {
         stage('Test SonarQube Connectivity') {
             steps {
                 script {
-                    def sonarUrl = 'http://localhost:9000'
+                    def sonarUrl = 'http://172.29.48.1:9000'
                     def response = sh(script: "curl -s -o /dev/null -w '%{http_code}' ${sonarUrl}", returnStdout: true).trim()
                     if (response == '200') {
                         echo "Successfully connected to SonarQube server."
@@ -29,7 +29,7 @@ pipeline {
             steps {
                 withSonarQubeEnv('SonarQube') {
                     bat 'mvn clean package'
-                    bat ''' mvn clean verify sonar:sonar -Dsonar.projectKey=scheduler-info -Dsonar.projectName='scheduler-info' -Dsonar.host.url=http://localhost:9000 '''
+                    bat ''' mvn clean verify sonar:sonar -Dsonar.projectKey=scheduler-info -Dsonar.projectName='scheduler-info' -Dsonar.host.url=http://172.29.48.1:9000 '''
                     echo 'SonarQube Analysis Completed'
                 }
             }
